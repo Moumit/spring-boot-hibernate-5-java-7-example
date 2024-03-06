@@ -14,15 +14,20 @@ import com.devglan.service.UserService;
 
 @Controller
 public class UserController {
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ResponseEntity<List<UserDetails>> userDetails() {
-        
+
 		List<UserDetails> userDetails = userService.getUserDetails();
 		return new ResponseEntity<List<UserDetails>>(userDetails, HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public ResponseEntity<String> test() {
+		return new ResponseEntity<String>("Hello", HttpStatus.OK);
 	}
 
 }

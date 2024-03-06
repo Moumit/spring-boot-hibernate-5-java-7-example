@@ -23,11 +23,9 @@ public class UserDaoImpl implements UserDao {
 
 	public List getUserDetails() {
 		Session session = entityManagerFactory.unwrap(SessionFactory.class).openSession();
-		CriteriaBuilder builder = session.getCriteriaBuilder();
-		CriteriaQuery criteria = builder.createQuery(UserDetails.class);
-		Root contactRoot = criteria.from(UserDetails.class);
-		criteria.select(contactRoot);
-		return session.createQuery(criteria).getResultList();
+
+		return session.createCriteria(UserDetails.class).list();
+
 	}
 
 }
